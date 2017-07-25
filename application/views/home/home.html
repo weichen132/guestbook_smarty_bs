@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 以home。php的路径为参考路径 -->
+<link href="../../../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<table class="table table-bordered table-striped text-center">
+	<tr><td>用户名</td><td>用户邮箱</td><td>注册时间</td><td>操作</td></tr>
+	<!-- //$data把数据赋值给变量，这样静态页面就可以接受它 -->
+	<!--逻辑判断一个{}，读取值{{}}-->
+	{foreach $data as $key=>$value}
+		<tr>
+			<td>{$value->username}</td>
+			<td>{$value->email}</td>
+			<td>{$value->regTime}</td>
+			<td>
+				<a>修改</a>
+				<a href='delete.php?id={$value->id}'>删除</a>
+			</td>
+		</tr>
+	{/foreach}
+</table>
+<!--html显示分页,home.php用smarty->assign存了-->
+<div class="page">{{$page}}</div>
+<style>
+	.page{
+		text-align:center;
+	}
+</style>
+
+</body>
+</html>
